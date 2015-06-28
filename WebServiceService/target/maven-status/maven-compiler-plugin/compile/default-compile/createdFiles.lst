@@ -1,5 +1,0 @@
-com\chocolate\webservice\main\MainRun.class
-com\chocolate\webservice\vo\Student.class
-com\chocolate\webservice\cxfinterceptor\InterceptroIMPL.class
-com\chocolate\webservice\cxfinterceptor\IInterceptorDemo.class
-com\chocolate\webservice\cxfinterceptor\App.class
