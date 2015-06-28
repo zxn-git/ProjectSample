@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.sample.project</groupId>
+	<artifactId>project-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+
+	<!-- 聚合 complie -->
+	<modules>
+		<module>../springmvc-web</module>
+		<module>../spring-service</module>
+		<module>../mybatis-core</module>
+		<module>../project-log</module>
+	</modules>
+
+	<!-- 用来控制版本号 -->
+	<properties>
+		<springframworkId>org.springframework</springframworkId>
+		<springframwork.version>4.1.6.RELEASE</springframwork.version>
+	</properties>
+
+	<!--dependencyManagement声明的依赖 不会给project-parent和子模块引入依赖，只是配置会被继承 -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>${springframworkId}</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${springframvowrk.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<build>
+		<!-- pluginManagement 效果同上 -->
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>1.7</source>
+						<target>1.7</target>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-resources-plugin</artifactId>
+					<configuration>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+</project>
