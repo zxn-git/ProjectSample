@@ -15,10 +15,11 @@
 		<module>../project-log</module>
 	</modules>
 
-	<!-- 用来控制版本号 -->
+	<!-- 命名全局配置文件别名：可以用来控制版本号 -->
 	<properties>
 		<springframworkId>org.springframework</springframworkId>
 		<springframwork.version>4.1.6.RELEASE</springframwork.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<!--dependencyManagement声明的依赖 不会给project-parent和子模块引入依赖，只是配置会被继承 -->
@@ -29,7 +30,19 @@
 				<artifactId>spring-core</artifactId>
 				<version>${springframvowrk.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>3.2.8</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>3.8.1</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
+
 	</dependencyManagement>
 
 	<build>
