@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-	    <!-- 全路径别名 -->
+		<!-- 全路径别名 -->
 		<typeAlias alias="User" type="com.yihaomen.mybatis.model.User" />
 	</typeAliases>
 
@@ -20,6 +20,7 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="com/yihaomen/mybatis/model/User.xml" />
+		<!-- 要映射的类的xml配置文件 -->
+		<mapper resource="com/sample/project/mybatis_core/mapping/User.xml" />
 	</mappers>
-	</configuration>
+</configuration>
