@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 使用接口的方式编程。这种方式，要注意的一个地方就是。在User.xml 的配置文件中 ，namespace 命名空间非常重要，不能有错，必须与我们定义的package 
+	和 接口一致 -->
+<mapper namespace="com.sample.project.mybatis_core.dao.IUserMapper">
 
-<mapper namespace="com.sample.project.mybatis_core.mapping">
+	<!-- 自己配置resultMap ,用于返回List<User> -->
+	<resultMap type="User" id="ResultMap">
+		<id column="ID" property="id" />
+		<result column="NAME" property="name" />
+		<result column="AGE" property="age" />
+	</resultMap>
+
 	<select id="selectUserByID" parameterType="int" resultType="User">
 		select * from user where id = #{id}
 	</select>
+
+	<select id="selectUsers" parameterType="string" resultMap="ResultMap">
+		select * from user where name like #{name}
+	</select>
+
+	<insert id="addUser" parameterType="User" useGeneratedKeys="true"
+		keyProperty="id">
+		insert into user(age,name) values(#{age},#{name})
+	</insert>
+
+	<update id="updateUser" parameterType="User">
+		update user set age=#{age},name=#{name} where id=#{id}
+	</update>
+
+	<delete id="deleteUser" parameterType="int">
+		delete  from user where id=#{id}
+	</delete>
 </mapper>

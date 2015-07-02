@@ -18,8 +18,13 @@
 	<name>mybatis-core</name>
 	<url>http://maven.apache.org</url>
 
-     <!-- 从父配置中继承来的包 -->
+	<!-- 从父配置中继承来的包 -->
 	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>project-log</artifactId>
+			<version>${project.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>

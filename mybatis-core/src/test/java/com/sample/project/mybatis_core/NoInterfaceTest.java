@@ -33,8 +33,7 @@ public class NoInterfaceTest {
 	public static void main(String[] args) {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		User user = (User) sqlSession.selectOne("com.sample.project.mybatis_core.mapping.selectUserByID", 1);
-		System.err.println(user.getName());
-		System.err.println(user.getAge());
+		System.err.println(user);
 	}
 
 }
