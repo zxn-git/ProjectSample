@@ -73,7 +73,7 @@ public class InterfaceTest {
 		SqlSession openSession = sqlSessionFactory.openSession(true);
 		InterfaceTest iterfaceTest = new InterfaceTest(openSession);
 		// ---------测试查询一条数据-----------
-//		iterfaceTest.selectUserByIDTest(1);
+		iterfaceTest.selectUserByIDTest(1);
 		// ---------测试查询多条数据-----------
 //		iterfaceTest.selectUsers("J%");
 		// ---------测试新增-----------------
@@ -88,6 +88,6 @@ public class InterfaceTest {
 //		user.setName("sers");
 //		iterfaceTest.updateUser(user);
 		// ---------测试删除-----------------
-		iterfaceTest.deleteUser(6);
+//		iterfaceTest.deleteUser(6);
 	}
 }

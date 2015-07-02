@@ -2,22 +2,27 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	<!-- 貌似必须放在前面 -->
+	<properties resource="db.properties" />
+	
 	<typeAliases>
 		<!-- 全路径别名 -->
-		<typeAlias alias="User" type="com.sample.project.mybatis_core.model.User" />
+		<typeAlias alias="User"
+			type="com.sample.project.mybatis_core.model.User" />
 	</typeAliases>
 
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC" />
 			<dataSource type="POOLED">
-				<property name="driver" value="com.mysql.jdbc.Driver" />
-				<property name="url" value="jdbc:mysql://192.168.220.128:3306/test" />
-				<property name="username" value="root" />
-				<property name="password" value="root" />
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${name}" />
+				<property name="password" value="${password}" />
 			</dataSource>
 		</environment>
 	</environments>
+
 
 	<mappers>
 		<!-- 要映射的类的xml配置文件 -->
