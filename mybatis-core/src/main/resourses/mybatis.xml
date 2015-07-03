@@ -4,11 +4,13 @@
 <configuration>
 	<!-- 貌似必须放在前面 -->
 	<properties resource="db.properties" />
-	
+
 	<typeAliases>
 		<!-- 全路径别名 -->
 		<typeAlias alias="User"
 			type="com.sample.project.mybatis_core.model.User" />
+		<typeAlias alias="Article"
+			type="com.sample.project.mybatis_core.model.Article" />
 	</typeAliases>
 
 	<environments default="development">

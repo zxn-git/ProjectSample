@@ -5,7 +5,7 @@
 	和 接口一致 -->
 <mapper namespace="com.sample.project.mybatis_core.dao.IUserMapper">
 
-	<!-- 自己配置resultMap ,用于返回List<User> -->
+	<!-- 自己配置resultMap,用于返回List<User> -->
 	<resultMap type="User" id="ResultMap">
 		<id column="ID" property="id" />
 		<result column="NAME" property="name" />
@@ -26,10 +26,13 @@
 	</insert>
 
 	<update id="updateUser" parameterType="User">
-		update user set age=#{age},name=#{name} where id=#{id}
+		update user set
+		age=#{age},name=#{name} where id=#{id}
 	</update>
 
 	<delete id="deleteUser" parameterType="int">
-		delete  from user where id=#{id}
+		delete from user where
+		id=#{id}
 	</delete>
+
 </mapper>

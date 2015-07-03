@@ -13,7 +13,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import com.sample.project.mybatis_core.dao.IUserMapper;
 import com.sample.project.mybatis_core.model.User;
 
-public class InterfaceTest {
+public class UserTest {
 	private static Reader reader;
 	private static SqlSessionFactory sqlSessionFactory;
 	private SqlSession openSession;
@@ -27,7 +27,7 @@ public class InterfaceTest {
 		}
 	}
 
-	public InterfaceTest(SqlSession openSession) {
+	public UserTest(SqlSession openSession) {
 		this.openSession = openSession;
 	}
 
@@ -62,32 +62,34 @@ public class InterfaceTest {
 		mapper.updateUser(user);
 		close();
 	}
-	
+
 	public void deleteUser(int id) {
 		IUserMapper mapper = openSession.getMapper(IUserMapper.class);
 		mapper.deleteUser(id);
 		close();
 	}
-	
+
+
 	public static void main(String[] args) {
 		SqlSession openSession = sqlSessionFactory.openSession(true);
-		InterfaceTest iterfaceTest = new InterfaceTest(openSession);
+		UserTest iterfaceTest = new UserTest(openSession);
 		// ---------测试查询一条数据-----------
-		iterfaceTest.selectUserByIDTest(1);
+		// iterfaceTest.selectUserByIDTest(1);
 		// ---------测试查询多条数据-----------
-//		iterfaceTest.selectUsers("J%");
+		// iterfaceTest.selectUsers("J%");
 		// ---------测试新增-----------------
 		// User user = new User();
 		// user.setAge(4);
 		// user.setName("sers");
-//		iterfaceTest.addUser(user);
+		// iterfaceTest.addUser(user);
 		// ---------测试修改-----------------
-//		User user = new User();
-//		user.setAge(4);
-//		user.setId(6);
-//		user.setName("sers");
-//		iterfaceTest.updateUser(user);
+		// User user = new User();
+		// user.setAge(4);
+		// user.setId(6);
+		// user.setName("sers");
+		// iterfaceTest.updateUser(user);
 		// ---------测试删除-----------------
-//		iterfaceTest.deleteUser(6);
+		 iterfaceTest.deleteUser(6);
+
 	}
 }
