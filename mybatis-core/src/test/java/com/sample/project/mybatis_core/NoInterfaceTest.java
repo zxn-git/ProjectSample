@@ -7,6 +7,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Test;
 
 import com.sample.project.mybatis_core.model.User;
 
@@ -30,10 +31,14 @@ public class NoInterfaceTest {
 		}
 	}
 
-	public static void main(String[] args) {
+	/**
+	 * 测试这个方法，需要将User.xml 作如下修改 <mapper
+	 * namespace="com.sample.project.mybatis_core.mapping">
+	 */
+	@Test
+	public void selectOne() {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		User user = (User) sqlSession.selectOne("com.sample.project.mybatis_core.mapping.selectUserByID", 1);
 		System.err.println(user);
 	}
-
 }

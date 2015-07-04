@@ -2,9 +2,17 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sample.project.mybatis_core.dao.IArticleMapper">
+
 	<!-- ###################配置一对一查询######################## -->
-	<!-- 第一种 -->
+
+	<!-- 第一种方式 -->
 	<!-- association:用于一对一的关联查询 property:对象属性名称 javaType:对象属性类型 -->
+	<select id="selectArticleByIDOne" parameterType="int"
+		resultMap="resultUserArticleOne">
+		select u.name,u.id uid,u.age,a.id aid,a.title,a.content from
+		user u,article a
+		where a.userid = u.id and a.id=#{id}
+	</select>
 	<resultMap type="Article" id="resultUserArticleOne">
 		<id property="id" column="aid" />
 		<result property="title" column="title" />
@@ -15,31 +23,65 @@
 			<result property="age" column="age" />
 		</association>
 	</resultMap>
-	<select id="selectArticleByIDOne" parameterType="int"
-		resultMap="resultUserArticleOne">
-		select u.name,u.id uid,u.age,a.id aid,a.title,a.content from
-		user u,article a
-		where a.userid = u.id and a.id=#{id}
-	</select>
 
-	<!-- 第二种 -->
-	<!-- colnum:所对应的外键字段名称           select:使用另一个查询封装的结果
+	<!-- 第二种方式 -->
+	<!-- colnum:所对应的外键字段名称 select:使用另一个查询封装的结果 -->
+	<select id="selectArticleByIDTwo" parameterType="int"
+		resultMap="resultUserArticleTwo">
+		select id aid,title,content,userid from article where
+		id=#{id}
+	</select>
 	<resultMap type="Article" id="resultUserArticleTwo">
 		<id property="id" column="aid" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />
-		<association property="user" javaType="User" column="userid"
-			select="getUser" />
+		<association property="user" column="userid" javaType="User"
+			select="getUser">
+		</association>
 	</resultMap>
 	<select id="getUser" parameterType="int" resultType="User">
 		select *
 		from user where id=#{id}
 	</select>
-	<select id="selectArticleByIDTwo" parameterType="int"
-		resultType="resultUserArticleTwo">
-		select id aid,title,content,userid from Article where
-		id=#{id}
+
+
+	<!-- ################### 配置一对多查询 （应该写在User.xml里） -->
+	<!-- 第一种方式 -->
+	<select id="selectUserArticlesOne" parameterType="int"
+		resultMap="resultUserArticlesOne">
+		select
+		u.name,u.age,u.id uid ,a.title,a.content,a.id aid from
+		user u,
+		article
+		a where u.id = a.userid and u.id=#{userId}
 	</select>
- -->
+	<resultMap type="User" id="resultUserArticlesOne">
+		<id property="id" column="uid" />
+		<result property="name" column="name" />
+		<result property="age" column="age" />
+		<collection property="articles" ofType="Article">
+			<id property="id" column="aid" />
+			<result property="title" column="title" />
+			<result property="content" column="content" />
+		</collection>
+	</resultMap>
+
+	<!-- 第二种方式 -->
+	<select id="selectUserArticlesTwo" parameterType="int"
+		resultMap="resultUserArticlesTwo">
+		select * from user where id=#{id}
+	</select>
+
+	<resultMap type="User" id="resultUserArticlesTwo">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="age" column="age" />
+		<collection property="articles" column="id" ofType="Article"
+			select="getArticle"></collection>
+	</resultMap>
+	<select id="getArticle"  parameterType="int" resultType="Article">
+		select id,title,content from article where userid=#{id}
+	</select>
+
 
 </mapper>
