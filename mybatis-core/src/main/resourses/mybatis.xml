@@ -29,5 +29,6 @@
 	<mappers>
 		<!-- 要映射的类的xml配置文件 -->
 		<mapper resource="com/sample/project/mybatis_core/mapping/User.xml" />
+		<mapper resource="com/sample/project/mybatis_core/mapping/Article.xml" />
 	</mappers>
 </configuration>

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="com.sample.project.mybatis_core.dao.IArticleMapper">
-	<!--------------------------------- 配置一对一查询 --------------------- -->
-	<!-- association:用于一对一的关联查询 property:对象属性名称 javaType:对象属性类型 colnum:所对应的外键字段名称 
-		select:使用另一个查询封装的结果 -->
+	<!-- ###################配置一对一查询######################## -->
 	<!-- 第一种 -->
+	<!-- association:用于一对一的关联查询 property:对象属性名称 javaType:对象属性类型 -->
 	<resultMap type="Article" id="resultUserArticleOne">
 		<id property="id" column="aid" />
 		<result property="title" column="title" />
@@ -17,21 +15,31 @@
 			<result property="age" column="age" />
 		</association>
 	</resultMap>
-	<select id="resultUserArticleOne" parameterType="int"
-		resultMap="resultUserArticleList">
+	<select id="selectArticleByIDOne" parameterType="int"
+		resultMap="resultUserArticleOne">
 		select u.name,u.id uid,u.age,a.id aid,a.title,a.content from
 		user u,article a
 		where a.userid = u.id and a.id=#{id}
 	</select>
-	
+
 	<!-- 第二种 -->
+	<!-- colnum:所对应的外键字段名称           select:使用另一个查询封装的结果
 	<resultMap type="Article" id="resultUserArticleTwo">
 		<id property="id" column="aid" />
 		<result property="title" column="title" />
 		<result property="content" column="content" />
-		<association property="user" javaType="User" column="id"
-			select="" />
+		<association property="user" javaType="User" column="userid"
+			select="getUser" />
 	</resultMap>
-	<select id="selectUserByID"></select>
+	<select id="getUser" parameterType="int" resultType="User">
+		select *
+		from user where id=#{id}
+	</select>
+	<select id="selectArticleByIDTwo" parameterType="int"
+		resultType="resultUserArticleTwo">
+		select id aid,title,content,userid from Article where
+		id=#{id}
+	</select>
+ -->
 
 </mapper>

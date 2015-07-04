@@ -40,33 +40,28 @@ public class UserTest {
 	public void selectUserByIDTest(int i) {
 		IUserMapper mapper = openSession.getMapper(IUserMapper.class);
 		User selectUserByID = mapper.selectUserByID(1);
-		close();
 		System.err.println(selectUserByID);
 	}
 
 	public void selectUsers(String like) {
 		IUserMapper mapper = openSession.getMapper(IUserMapper.class);
 		List<User> selectUsers = mapper.selectUsers(like);
-		close();
 		System.err.println(Arrays.toString(selectUsers.toArray()));
 	}
 
 	public void addUser(User user) {
 		IUserMapper mapper = openSession.getMapper(IUserMapper.class);
 		mapper.addUser(user);
-		close();
 	}
 
 	public void updateUser(User user) {
 		IUserMapper mapper = openSession.getMapper(IUserMapper.class);
 		mapper.updateUser(user);
-		close();
 	}
 
 	public void deleteUser(int id) {
 		IUserMapper mapper = openSession.getMapper(IUserMapper.class);
 		mapper.deleteUser(id);
-		close();
 	}
 
 
@@ -76,7 +71,7 @@ public class UserTest {
 		// ---------测试查询一条数据-----------
 		// iterfaceTest.selectUserByIDTest(1);
 		// ---------测试查询多条数据-----------
-		// iterfaceTest.selectUsers("J%");
+		 iterfaceTest.selectUsers("J%");
 		// ---------测试新增-----------------
 		// User user = new User();
 		// user.setAge(4);
@@ -89,7 +84,9 @@ public class UserTest {
 		// user.setName("sers");
 		// iterfaceTest.updateUser(user);
 		// ---------测试删除-----------------
-		 iterfaceTest.deleteUser(6);
+//		 iterfaceTest.deleteUser(6);
+		 
+		 iterfaceTest.close();
 
 	}
 }
