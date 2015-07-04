@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sample.project.mybatis_core.dao.ICallProcedureMapper">
+
+   <!--statementType:CALLABLE 制定该语句用于调用存储过程  -->
+	<select id="getCount" parameterMap="map" statementType="CALLABLE">
+		call test.get_user_count(?,?)
+	</select>
+
+	<parameterMap type="java.util.Map" id="map">
+		<parameter property="inPara" mode="IN" jdbcType="INTEGER" />
+		<parameter property="outPara" mode="OUT" jdbcType="INTEGER" />
+	</parameterMap>
+</mapper>

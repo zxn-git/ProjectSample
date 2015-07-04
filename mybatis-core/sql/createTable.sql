@@ -22,5 +22,25 @@ Insert INTO article VALUES ('3', '1', 'test_title_3', 'test_content_3');
 Insert INTO article VALUES ('4', '1', 'test_title_4', 'test_content_4');
 
 
+--创建存储过程(查询得到user数量, 如果传入的是0查所有 ，else 大于传入参数)
+--DELIMITER $  用$作为语句分割符 
+DELIMITER $
+CREATE PROCEDURE test.get_user_count(IN para INT, OUT user_count INT)
+BEGIN
+IF para=0 THEN
+SELECT COUNT(*) FROM test.user  INTO user_count;
+ELSE
+SELECT COUNT(*) FROM test.user WHERE age>para INTO user_count;
+END IF;
+END
+$
+--调用存储过程
+--DELIMITER ; 回复原来的分隔符;
+DELIMITER ;
+SET @user_count = 0;
+CALL test.get_user_count(11, @user_count);
+SELECT @user_count;
+
+
 
 
