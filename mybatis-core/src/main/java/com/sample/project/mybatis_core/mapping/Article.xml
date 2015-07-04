@@ -46,6 +46,8 @@
 
 
 	<!-- ################### 配置一对多查询 （应该写在User.xml里） -->
+	<!-- collection : 用于一对多关联查询 -->
+	<!-- ofType : 指定集合元素对象类型 -->
 	<!-- 第一种方式 -->
 	<select id="selectUserArticlesOne" parameterType="int"
 		resultMap="resultUserArticlesOne">
