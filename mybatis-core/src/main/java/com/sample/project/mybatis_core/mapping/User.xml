@@ -16,6 +16,10 @@
 		select * from user where id = #{id}
 	</select>
 
+	<select id="selectUserAll"  resultMap="ResultMap">
+		select * from user ;
+	</select>
+	
 	<select id="selectUsers" parameterType="string" resultMap="ResultMap">
 		select * from user where name like #{name}
 	</select>

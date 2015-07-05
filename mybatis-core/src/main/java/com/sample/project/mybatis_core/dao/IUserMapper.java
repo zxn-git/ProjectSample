@@ -10,12 +10,14 @@ public interface IUserMapper {
 	public User selectUserByID(int id);
 	
 	public List<User> selectUsers(String name);
+
+	public List<User> selectUserAll();
 	
-	public void addUser(User user);
+	public int addUser(User user);
 	
-	public void updateUser(User user);
+	public int updateUser(User user);
 	
-	public void deleteUser(int id);
+	public int deleteUser(int id);
 	
 	public List<Article> getUserArticles(int id);
 }

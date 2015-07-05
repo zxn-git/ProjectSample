@@ -6,7 +6,6 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-
 	<!-- 聚合 complie -->
 	<modules>
 		<module>../springmvc-web</module>
@@ -25,27 +24,97 @@
 	<!--dependencyManagement声明的依赖 不会给project-parent和子模块引入依赖，只是配置会被继承 -->
 	<dependencyManagement>
 		<dependencies>
+			<!-- 添加Spring-core包 -->
 			<dependency>
 				<groupId>${springframworkId}</groupId>
 				<artifactId>spring-core</artifactId>
 				<version>${springframvowrk.version}</version>
 			</dependency>
+			<!-- 添加spring-context包 -->
+			<dependency>
+				<groupId>${springframworkId}</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${springframvowrk.version}</version>
+			</dependency>
+			<!-- 添加spring-tx包 -->
+			<dependency>
+				<groupId>${springframworkId}</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${springframvowrk.version}</version>
+			</dependency>
+			<!-- 添加spring-jdbc包 -->
+			<dependency>
+				<groupId>${springframworkId}</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${springframvowrk.version}</version>
+			</dependency>
+			<!-- 为了方便进行单元测试，添加spring-test包 -->
+			<dependency>
+				<groupId>${springframworkId}</groupId>
+				<artifactId>spring-test</artifactId>
+				<version>${springframvowrk.version}</version>
+			</dependency>
+			<!--添加spring-web包 -->
+			<dependency>
+				<groupId>${springframworkId}</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${springframvowrk.version}</version>
+			</dependency>
+			<!--添加aspectjweaver包 -->
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.8.5</version>
+			</dependency>
+			<!-- 添加mybatis的核心包 -->
 			<dependency>
 				<groupId>org.mybatis</groupId>
 				<artifactId>mybatis</artifactId>
 				<version>3.2.8</version>
 			</dependency>
+			<!-- 添加mybatis与Spring整合的核心包 -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>1.2.2</version>
+			</dependency>
+			<!-- 添加servlet3.0核心包 -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>javax.servlet-api</artifactId>
+				<version>3.0.1</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>javax.servlet.jsp-api</artifactId>
+				<version>2.3.2-b01</version>
+			</dependency>
+			<!-- jstl -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>jstl</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<!-- 添加mysql驱动包 -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>5.1.35</version>
+			</dependency>
+			<!-- 添加druid连接池包 -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>1.0.12</version>
+			</dependency>
+			<!-- 添加junit单元测试包 -->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.12</version>
 				<scope>test</scope>
 			</dependency>
-			<dependency>
-				<groupId>mysql</groupId>
-				<artifactId>mysql-connector-java</artifactId>
-				<version>5.1.35</version>
-			</dependency>
+			<!-- 添加log4j日志包 -->
 			<dependency>
 				<groupId>log4j</groupId>
 				<artifactId>log4j</artifactId>
@@ -57,23 +126,23 @@
 	<build>
 		<!-- pluginManagement 效果同上 -->
 		<!-- <pluginManagement> -->
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<configuration>
-						<source>1.7</source>
-						<target>1.7</target>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<configuration>
-						<encoding>UTF-8</encoding>
-					</configuration>
-				</plugin>
-			</plugins>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
 		<!-- </pluginManagement> -->
 	</build>
 

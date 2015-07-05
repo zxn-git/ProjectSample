@@ -1,32 +1,14 @@
 package com.sample.project.mybatis_core;
 
-import java.io.IOException;
-import java.io.Reader;
 import java.util.Arrays;
 import java.util.List;
 
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import com.sample.project.mybatis_core.dao.IUserMapper;
 import com.sample.project.mybatis_core.model.User;
 
-public class UserTest {
-	private static Reader reader;
-	private static SqlSessionFactory sqlSessionFactory;
-	private SqlSession openSession = sqlSessionFactory.openSession(true);;
-
-	static {
-		try {
-			reader = Resources.getResourceAsReader("mybatis.xml");
-			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+public class UserTest extends Father{
 
 	/**
 	 * 测试查询一条数据

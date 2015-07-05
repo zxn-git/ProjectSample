@@ -1,14 +1,5 @@
 package com.sample.project.mybatis_core;
 
-import java.io.IOException;
-import java.io.Reader;
-
-import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import org.junit.Test;
-
 import com.sample.project.mybatis_core.model.User;
 
 /**
@@ -17,28 +8,16 @@ import com.sample.project.mybatis_core.model.User;
  * @author Administrator
  *
  */
-public class NoInterfaceTest {
+public class NoInterfaceTest extends Father{
 
-	private static Reader reader;
-	private static SqlSessionFactory sqlSessionFactory;
-
-	static {
-		try {
-			reader = Resources.getResourceAsReader("mybatis.xml");
-			sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	/**
 	 * 测试这个方法，需要将User.xml 作如下修改 <mapper
 	 * namespace="com.sample.project.mybatis_core.mapping">
 	 */
-	@Test
+	// @Test
 	public void selectOne() {
-		SqlSession sqlSession = sqlSessionFactory.openSession();
-		User user = (User) sqlSession.selectOne("com.sample.project.mybatis_core.mapping.selectUserByID", 1);
+		User user = (User) openSession.selectOne("com.sample.project.mybatis_core.mapping.selectUserByID", 1);
 		System.err.println(user);
 	}
 }
