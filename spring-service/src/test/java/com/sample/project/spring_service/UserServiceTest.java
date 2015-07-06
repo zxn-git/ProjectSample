@@ -17,6 +17,7 @@ public class UserServiceTest {
 
 	@Before
 	public void before() {
+		@SuppressWarnings("all")
 		// 使用"spring.xml"和"spring-mybatis.xml"这两个配置文件创建Spring上下文
 		ApplicationContext ac = new ClassPathXmlApplicationContext(new String[] { "spring.xml", "spring-mybatis.xml" });
 		// 从Spring容器中根据bean的id取出我们要使用的userService对象

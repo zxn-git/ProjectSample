@@ -11,6 +11,9 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	<context:property-placeholder location="classpath:dbconfig.properties" />
 
 	<!-- 自动扫描+自动注入，扫描com.sample.project.spring_service.service.impl.UserServiceIMPL这个包以及它的子包的所有使用@Service注解标注的类 -->
+	<!-- <context:component-scan/> 配置项不但启用了对类包进行扫描以实施注释驱动 Bean 定义的功能，同时还启用了注释驱动自动注入的功能（即还隐式地在内部注册了AutowiredAnnotationBeanPostProcessor 
+		和 CommonAnnotationBeanPostProcessor），因此当使用 <context:component-scan/> 后，就可以将 
+		<context:annotation-config/> 移除了 -->
 	<context:component-scan
 		base-package="com.sample.project.spring_service.service.impl" />
 </beans>
