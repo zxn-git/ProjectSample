@@ -13,7 +13,7 @@ public class UserTest extends Father{
 	/**
 	 * 测试查询一条数据
 	 */
-	@Test
+//	@Test
 	public void selectUserByIDTest() {
 		IUserMapper mapper = openSession.getMapper(IUserMapper.class);
 		User selectUserByID = mapper.selectUserByID(1);
@@ -23,17 +23,27 @@ public class UserTest extends Father{
 	/**
 	 * 测试查询多条数据
 	 */
-	@Test
+//	@Test
 	public void selectUsers() {
 		IUserMapper mapper = openSession.getMapper(IUserMapper.class);
 		List<User> selectUsers = mapper.selectUsers("J%");
+		System.err.println(Arrays.toString(selectUsers.toArray()));
+	}
+	
+	/**
+	 * 测试查询所有数据
+	 */
+	@Test
+	public void selectUserAll() {
+		IUserMapper mapper = openSession.getMapper(IUserMapper.class);
+		List<User> selectUsers = mapper.selectUserAll();
 		System.err.println(Arrays.toString(selectUsers.toArray()));
 	}
 
 	/**
 	 * 测试新增一条数据
 	 */
-	@Test
+//	@Test
 	public void addUser() {
 		User user = new User();
 		user.setAge(4);
@@ -45,7 +55,7 @@ public class UserTest extends Father{
 	/**
 	 * 测试修改一条数据
 	 */
-	@Test
+//	@Test
 	public void updateUser() {
 		User user = new User();
 		user.setAge(4);

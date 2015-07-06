@@ -5,7 +5,9 @@
 	<!-- 模块id， 版本、组都在parent中继承过来 -->
 	<artifactId>mybatis-core</artifactId>
 	<packaging>jar</packaging>
-
+	<name>mybatis-core</name>
+	<url>http://maven.apache.org</url>
+	
 	<!-- 继承父模块，方便项目包管理 -->
 	<parent>
 		<groupId>com.sample.project</groupId>
@@ -14,9 +16,7 @@
 		<relativePath>../project-parent/pom.xml</relativePath>
 	</parent>
 
-	<!-- 自带配置文件，后期看看应该可以删除 -->
-	<name>mybatis-core</name>
-	<url>http://maven.apache.org</url>
+
 
 	<!-- 从父配置中继承来的包 -->
 	<dependencies>
