@@ -1,10 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<artifactId>spring-service</artifactId>
 	<packaging>jar</packaging>
-
+	<name>spring-service</name>
+	<url>http://maven.apache.org</url>
+	
+	
 	<!-- 继承父模块，方便项目包管理 -->
 	<parent>
 		<groupId>com.sample.project</groupId>
@@ -13,25 +15,60 @@
 		<relativePath>../project-parent/pom.xml</relativePath>
 	</parent>
 
-
-
-	<name>spring-service</name>
-	<url>http://maven.apache.org</url>
-
-
 	<dependencies>
-		
-
+		<!-- 添加mybatis-core:自己开发的项目 -->
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>mybatis-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-	
+		
+		<!-- 添加Spring-core包 -->
+		<dependency>
+			<groupId>${springframworkId}</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
+		<!-- 添加spring-context包 -->
+		<dependency>
+			<groupId>${springframworkId}</groupId>
+			<artifactId>spring-context</artifactId>
+		</dependency>
+		<!-- 添加spring-tx包 -->
+		<dependency>
+			<groupId>${springframworkId}</groupId>
+			<artifactId>spring-tx</artifactId>
+		</dependency>
+		<!-- 添加spring-jdbc包 -->
+		<dependency>
+			<groupId>${springframworkId}</groupId>
+			<artifactId>spring-jdbc</artifactId>
+		</dependency>
+		<!-- 为了方便进行单元测试，添加spring-test包 -->
+		<dependency>
+			<groupId>${springframworkId}</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+		<!--添加aspectjweaver包 -->
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+		</dependency>
+		<!-- 添加mybatis与Spring整合的核心包 -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis-spring</artifactId>
+		</dependency>
+		<!-- 添加druid连接池包 -->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>druid</artifactId>
+		</dependency>
+		
+		<!-- 添加junit单元测试包 -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 		</dependency>
-	
+
 	</dependencies>
 </project>

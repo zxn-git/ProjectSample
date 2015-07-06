@@ -4,13 +4,18 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
 import com.sample.project.mybatis_core.dao.IUserMapper;
 import com.sample.project.mybatis_core.model.User;
 import com.sample.project.spring_service.service.IUserService;
 
+@Service
 public class UserServiceIMPL implements IUserService {
 
-	@Resource(name = "iUserMapper")
+//	@Autowired
+//	@Resource(name="iUserMapper")
+	@Resource(type=IUserMapper.class)
 	private IUserMapper iUserMapper;
 
 	@Override
