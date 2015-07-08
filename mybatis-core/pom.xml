@@ -38,15 +38,33 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 	</dependencies>
-	
-	<!-- 达成war包时，跳过的文件 -->
+
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
+				<groupId>com.sun.enterprise</groupId>
+				<artifactId>hk2-maven-plugin</artifactId>
+				<configuration>
+					<!-- 打包加入 <includes> <include>com/sun/logging/LogDomains.*</include> 
+						</includes> -->
+					<!-- 打包剔除 -->
+					<excludes>
+						<exclude>src/test/resources/**</exclude>
+					</excludes>
+				</configuration>
 			</plugin>
 		</plugins>
+		<!-- 打包时包含 mapper.xml文件 -->
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
 	</build>
 
 </project>

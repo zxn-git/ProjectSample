@@ -23,7 +23,7 @@ public class UserTest extends Father{
 	/**
 	 * 测试查询多条数据
 	 */
-//	@Test
+	@Test
 	public void selectUsers() {
 		IUserMapper mapper = openSession.getMapper(IUserMapper.class);
 		List<User> selectUsers = mapper.selectUsers("J%");

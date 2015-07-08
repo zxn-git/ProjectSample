@@ -24,6 +24,15 @@ public class UserServiceTest {
 		iUserService = (IUserService) ac.getBean("userServiceIMPL");
 	}
 
+//	@Test
+	public void test1() {
+		List<User> all = iUserService.getAll();
+		for (User user : all) {
+			System.err.println(user);
+		}
+	}
+	
+
 	@Test
 	public void test() {
 		List<User> all = iUserService.getAll();
@@ -31,7 +40,6 @@ public class UserServiceTest {
 			System.err.println(user);
 		}
 	}
-	
 	@After
 	public void after(){
 		

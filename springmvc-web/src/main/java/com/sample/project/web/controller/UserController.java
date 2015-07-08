@@ -24,4 +24,29 @@ public class UserController {
 		request.setAttribute("userlist", all);
 		return "listUser";
 	}
+
+	@RequestMapping(value = "/addUser")
+	public String addUser(User user) {
+		iUserService.insert(user);
+		return "redirect:/userController/listUser.do";
+	}
+
+	@RequestMapping(value = "/deleteUser")
+	public String deleteUser(int id) {
+		iUserService.delete(id);
+		return "redirect:/userController/listUser.do";
+	}
+
+	@RequestMapping(value = "/updateUserUI")
+	public String updateUserUI(int id, HttpServletRequest request) {
+		User user = iUserService.selectByPrimaryKey(id);
+		request.setAttribute("user", user);
+		return "updateUser";
+	}
+
+	@RequestMapping("/updateUser")
+	public String updateUser(User user) {
+		iUserService.update(user);
+		return "redirect:/userController/listUser.do";
+	}
 }
