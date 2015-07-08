@@ -15,10 +15,13 @@
 	</parent>
 
 	<dependencies>
+		<!-- 添加mybatis-core:自己开发的项目 -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>spring-service</artifactId>
+			<version>${project.version}</version>
 		</dependency>
+
 		<!--添加spring-web包 -->
 		<dependency>
 			<groupId>${springframworkId}</groupId>
@@ -43,6 +46,7 @@
 	</dependencies>
 
 	<build>
+		<!--install成springmvc-web.war -->
 		<finalName>springmvc-web</finalName>
 	</build>
 </project>

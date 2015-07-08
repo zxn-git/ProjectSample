@@ -10,7 +10,7 @@ http://www.springframework.org/schema/mvc
 http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
 	<!-- 启用了对类包进行扫描以实施注释驱动 Bean,并启动自动注入功能 -->
-	<context:component-scan base-package="rml.controller" />
+	<context:component-scan base-package="com.sample.project.web.controller" />
 
 	<!-- json 支持 -->
 	<bean id="mappingJacksonHttpMessageConverter"
@@ -30,11 +30,12 @@ http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 			</list>
 		</property>
 	</bean>
-
+	<!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
+		p:prefix="/jsp/" p:suffix=".jsp" />
 
+	<!-- 上传文件 -->
 	<bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding">
