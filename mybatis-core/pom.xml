@@ -7,7 +7,7 @@
 	<packaging>jar</packaging>
 	<name>mybatis-core</name>
 	<url>http://maven.apache.org</url>
-	
+
 	<!-- 继承父模块，方便项目包管理 -->
 	<parent>
 		<groupId>com.sample.project</groupId>
@@ -38,4 +38,15 @@
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
 	</dependencies>
+	
+	<!-- 达成war包时，跳过的文件 -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
 </project>

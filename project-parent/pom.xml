@@ -126,7 +126,20 @@
 
 	<build>
 		<!-- pluginManagement 效果同上 -->
-		<!-- <pluginManagement> -->
+		<pluginManagement>
+			<plugins>
+				<!-- 打包时不需要打包的文件 -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-war-plugin</artifactId>
+					<version>2.0.2</version>
+					<configuration>
+						<warSourceExcludes>src/test/resources/**</warSourceExcludes>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -143,8 +156,15 @@
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
+			<!-- 打包跳过单元测试 -->
+			<plugin>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
 		</plugins>
-		<!-- </pluginManagement> -->
 	</build>
 
 </project>
